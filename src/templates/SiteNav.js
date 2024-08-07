@@ -14,7 +14,7 @@ export default function SiteNav() {
     <>
     <Navbar variant="light" bg="light">
     <Container>
-        <Navbar.Brand href="/">Tinkergram</Navbar.Brand>
+        <Navbar.Brand href="/">LightWeight</Navbar.Brand>
         <Nav>
         <Nav.Link href="/login">Log in</Nav.Link>
         <Nav.Link href="/signup">Sign Up</Nav.Link>
@@ -29,8 +29,10 @@ export default function SiteNav() {
     if (loading) return;
     if (!user) {
         if (pathname == '/signup'){
-            return navigate("/signup")
-        } else return navigate("/login")
+            return navigate(pathname)
+        } else if (pathname == '/login'){
+          return navigate(pathname)
+      } else return navigate("/")
     } else return setNavbar(
         <>
         <Navbar variant="light" bg="light">

@@ -5,7 +5,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 import SiteNav from "../templates/SiteNav";
 
-export default function PostPageHome() {
+export default function WorkoutPage() {
   const [posts, setPosts] = useState([]);
 
    async function getAllPosts() {

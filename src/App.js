@@ -1,15 +1,15 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import PostPageHome from './views/PostPageHome';
 import LoginPage from './views/LoginPage';
 import SignUpPage from './views/SignUpPage';
 import PostPageAdd from './views/PostPageAdd';
 import PostPageDetails from './views/PostPageDetails';
 import PostPageUpdate from './views/PostPageUpdate';
+import LandingPage from './views/LandingPage';
 
 function App() {
 
   const router = createBrowserRouter([
-    { path: "/", element:<PostPageHome /> },
+    { path: "/", element:<LandingPage /> },
     { path: "/login", element:<LoginPage /> },
     { path: "/signup", element:<SignUpPage /> },
     { path: "/add", element: <PostPageAdd/> },    
