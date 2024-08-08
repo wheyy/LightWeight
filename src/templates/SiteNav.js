@@ -39,7 +39,7 @@ export default function SiteNav() {
             <Container>
             <Navbar.Brand href="/">LightWeight</Navbar.Brand>
             <Nav>
-                <Nav.Link href="/add">New Post</Nav.Link>
+                <Nav.Link href="/home">Dashboard</Nav.Link>
                 <Nav.Link onClick={(e) => signOut(auth)}>Sign Out</Nav.Link>
             </Nav>
             </Container>

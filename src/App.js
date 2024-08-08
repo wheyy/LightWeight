@@ -1,10 +1,9 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import LoginPage from './views/LoginPage';
 import SignUpPage from './views/SignUpPage';
-import PostPageDetails from './views/OldViews/PostPageDetails';
-import PostPageUpdate from './views/OldViews/PostPageUpdate';
 import LandingPage from './views/LandingPage';
 import ProfilePage from './views/ProfilePage';
+import WorkoutPageHome from './views/WorkoutPageHome';
 
 function App() {
 
@@ -15,8 +14,7 @@ function App() {
     { path: "/login", element:<LoginPage /> },
     { path: "/signup", element:<SignUpPage /> },
     { path: "/profile", element: <ProfilePage/> },    
-    { path: "/post/:id", element: <PostPageDetails/> },
-    { path: "/update/:id", element: <PostPageUpdate/> },
+    { path: "/home", element: <WorkoutPageHome/> },
   ])
   
   return (
