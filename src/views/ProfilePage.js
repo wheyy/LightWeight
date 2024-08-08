@@ -3,10 +3,10 @@ import { Button, Container, Form, Image, Row, Col } from "react-bootstrap";
 import { addDoc, collection } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom" ;
-import { auth, db, storage } from "../firebase";
+import { app, auth, db, storage } from "../firebase";
 import SiteNav from "../templates/SiteNav";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import { updateEmail, updatePassword, updateProfile } from "firebase/auth";
+import { EmailAuthProvider, reauthenticateWithCredential, updateEmail, updatePassword, updateProfile } from "firebase/auth";
 
 
 export default function ProfilePage() {
@@ -36,18 +36,35 @@ export default function ProfilePage() {
         // An error occurred
         // ...
         });
-        await updateEmail(user, email).then(() => {
-            // Email updated!
-            // ...
-        }).catch((error) => {
-            // An error occurred
-            // ...
-        });
-        await updatePassword(user, password).then(() => {
-        // Update successful.
+        // TODO(you): prompt the user to re-provide their sign-in credentials
+
+        const currentPassword = prompt("Enter your current password")
+        const credential = EmailAuthProvider.credential(user.email, currentPassword);
+        console.log(user.email,currentPassword)
+        console.log(credential)
+
+        reauthenticateWithCredential(user, credential).then(() => {
+        // User re-authenticated.
+            updateEmail(user, email).then(() => {
+                // Email updated!
+                console.log("Email Updated")
+            }).catch((error) => {
+                // An error occurred
+                // ...
+                console.log(error)
+            });
+            if (password) {
+                updatePassword(user, password).then(() => {
+                    // Update successful.
+                    }).catch((error) => {
+                    // An error ocurred
+                    // ...
+                    });
+            }
         }).catch((error) => {
         // An error ocurred
         // ...
+        console.log(error)
         });
         console.log(user);
     }
