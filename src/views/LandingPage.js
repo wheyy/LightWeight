@@ -2,10 +2,30 @@ import { useEffect, useState } from "react";
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import { collection, getDocs } from "firebase/firestore";
-import { db } from "../firebase";
-import SiteNav from "../templates/SiteNav";
+import { auth, db } from "../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 export default function LandingPage() {
+
+  const [user,loading] = useAuthState(auth);
+  
+  function UserOptions() {
+      if (user) {
+        return(
+          <>
+          <Button href="/home" className="mx-2 btn btn-primary">My Dashboard</Button>
+          </>
+        )
+      } else {
+        return(
+          <>
+          <Button href="/login" className="mx-2 btn btn-primary">Login</Button>
+          <Button href="/signup" className="mx-2 btn btn-primary">Sign Up</Button>
+          </>
+        )
+      }
+  }
+
 
   return (
     <>
@@ -17,8 +37,7 @@ export default function LandingPage() {
         <Row>
             <Col className="text-center">
             <h1 className="lightweight">LIGHTWEIGHT</h1>
-            <Button href="/login" className="mx-2 btn btn-primary">Login</Button>
-            <Button href="/signup" className="mx-2 btn btn-primary">Sign Up</Button>
+            <UserOptions/>
             </Col>
         </Row>
         </Container>

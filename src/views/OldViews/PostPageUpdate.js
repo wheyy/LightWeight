@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Button, Container, Form, Image } from "react-bootstrap";
 import { useParams, useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth,db, storage } from "../firebase";
+import { auth,db, storage } from "../../firebase";
 import { getDoc, doc, updateDoc } from "firebase/firestore";
-import SiteNav from "../templates/SiteNav";
+import SiteNav from "../../templates/SiteNav";
 import { getDownloadURL, ref, uploadBytes, deleteObject } from "firebase/storage";
 
 

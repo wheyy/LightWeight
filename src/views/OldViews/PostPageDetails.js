@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Card, Col, Container, Image, Nav, Navbar, Row } from "react-bootstrap";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useParams, useNavigate } from "react-router-dom";
-import { auth,db,storage } from "../firebase";
+import { auth,db,storage } from "../../firebase";
 import { signOut } from "firebase/auth";
 import { deleteDoc,doc,getDoc } from "firebase/firestore";
-import SiteNav from "../templates/SiteNav";
+import SiteNav from "../../templates/SiteNav";
 import { getStorage, ref, deleteObject } from "firebase/storage";
 
 
